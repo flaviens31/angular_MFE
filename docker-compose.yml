@@ -1,0 +1,57 @@
+version: '3'
+services:
+  shell:
+    build:
+      context: ./shell
+      dockerfile: Dockerfile
+    container_name: shell
+    ports:
+      - "4200:80"
+    networks:
+      - app-network
+
+  app1:
+    build:
+      context: ./app1
+      dockerfile: Dockerfile
+    container_name: app1
+    ports:
+      - "4201:80"
+    networks:
+      - app-network
+
+  app2:
+    build:
+      context: ./app2
+      dockerfile: Dockerfile
+    container_name: app2
+    ports:
+      - "4202:80"
+    networks:
+      - app-network
+
+  app3:
+    build:
+      context: ./app3
+      dockerfile: Dockerfile
+    container_name: app3
+    ports:
+      - "4203:80"
+    networks:
+      - app-network
+
+  electron-app:
+    build:
+      context: ./electron
+      dockerfile: Dockerfile
+    container_name: electron-app
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix  # Nécessaire pour afficher Electron avec X11
+    environment:
+      - DISPLAY=${DISPLAY}
+    networks:
+      - app-network
+    
+networks:
+  app-network:
+    driver: bridge

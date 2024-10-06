@@ -1,0 +1,36 @@
+<div *ngIf="!appsSelected">
+    <h2>Sélectionnez les applications à lancer :</h2>
+    <label>
+      <input type="checkbox" [(ngModel)]="selectedApps.app1" /> App 1
+    </label>
+    <label>
+      <input type="checkbox" [(ngModel)]="selectedApps.app2" /> App 2
+    </label>
+    <label>
+      <input type="checkbox" [(ngModel)]="selectedApps.app3" /> App 3
+    </label>
+    <button (click)="launchSelectedApps()">Lancer</button>
+  </div>
+  
+  <div *ngIf="appsSelected">
+    <div class="tabs">
+      <button [class.active]="activeTab === 'app1'" (click)="setActiveTab('app1')">App 1</button>
+      <button [class.active]="activeTab === 'app2'" (click)="setActiveTab('app2')">App 2</button>
+      <button [class.active]="activeTab === 'app3'" (click)="setActiveTab('app3')">App 3</button>
+    </div>
+  
+    <div class="tab-content">
+      <ng-container *ngIf="activeTab === 'app1' && app1Component">
+        <ng-container *ngComponentOutlet="app1Component"></ng-container>
+      </ng-container>
+  
+      <ng-container *ngIf="activeTab === 'app2' && app2Component">
+        <ng-container *ngComponentOutlet="app2Component"></ng-container>
+      </ng-container>
+  
+      <ng-container *ngIf="activeTab === 'app3' && app3Component">
+        <ng-container *ngComponentOutlet="app3Component"></ng-container>
+      </ng-container>
+    </div>
+  </div>
+  

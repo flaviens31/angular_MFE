@@ -1,0 +1,31 @@
+.nav-tabs {
+    list-style: none;
+    padding: 0;
+    display: flex;
+  }
+  
+  .nav-tabs li {
+    margin-right: 10px;
+  }
+  
+  .nav-tabs li a {
+    text-decoration: none;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    color: #333;
+  }
+  
+  .nav-tabs li a:hover {
+    background-color: #ddd;
+  }
+  
+  .nav-tabs li.active a {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .tab-content {
+    margin-top: 20px;
+  }
+  
